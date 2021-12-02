@@ -8,17 +8,15 @@ export const NotLazyLayout = () => {
 
       <ul>
         {routes.map(({ to, name }) => (
-          <li>
-            <NavLink key={to} to={to}>
-              {name}
-            </NavLink>
+          <li key={to}>
+            <NavLink to={to}>{name}</NavLink>
           </li>
         ))}
       </ul>
 
       <Routes>
         {routes.map(({ path, Component }) => (
-          <Route path={path} element={<Component />} />
+          <Route key={path} path={path} element={<Component />} />
         ))}
         <Route path='*' element={<Navigate to={routes[0].to} replace />} />
       </Routes>
